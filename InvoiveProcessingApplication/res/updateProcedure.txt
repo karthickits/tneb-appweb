@@ -1,0 +1,112 @@
+create or replace PROCEDURE CALCULATEINVOICEPROCESS(
+    CustomerID IN NUMBER,
+    TaxCalc    IN NUMBER,
+    StoreID OUT NUMBER)
+AS
+  STARTREADING     NUMBER;
+  ENDREADING       NUMBER;
+  CUMLATIVEREADING NUMBER;
+  PRICE            NUMBER;
+  TAX              NUMBER;
+  TAXAMT           NUMBER;
+  TAXPRICE         NUMBER;
+  SMARTMTERID      NUMBER;
+  STARTTIME        DATE;
+  ENDTIME          DATE;
+BEGIN
+  --1. Find Min and MAx and difference
+  SELECT
+    MIN(METERREADINGSTART),
+    MAX(METERREADINGEND),
+    MAX(METERREADINGEND)-MIN(METERREADINGSTART)
+  INTO
+    STARTREADING,
+    ENDREADING,
+    CUMLATIVEREADING
+  FROM
+    (
+      SELECT
+        *
+      FROM
+        RAWMETER
+      WHERE
+        SMARTMTERID IN
+        (
+          SELECT
+            METER_ID
+          FROM
+            METER
+          WHERE
+            CUSTOMER_ID=CustomerID
+        )
+    );
+  SELECT
+    MIN(STARTTIME),
+    MAX(ENDTIME)
+  INTO
+    STARTTIME,
+    ENDTIME
+  FROM
+    RAWMETER
+  WHERE
+    SMARTMTERID IN
+    (
+      SELECT
+        METER_ID
+      FROM
+        METER
+      WHERE
+        CUSTOMER_ID=CustomerID
+    );
+  --2 calculate charges
+  IF(CUMLATIVEREADING > 0 AND CUMLATIVEREADING<=300) THEN
+    PRICE            :=CUMLATIVEREADING*1.25;
+  END IF;
+  IF(CUMLATIVEREADING>300 AND CUMLATIVEREADING<=600) THEN
+    PRICE           :=375+((CUMLATIVEREADING-300)*1.75);
+  END IF;
+  IF(CUMLATIVEREADING>600 AND CUMLATIVEREADING<=1000) THEN
+    PRICE           :=375+525+((CUMLATIVEREADING-600)*2.25);
+  END IF;
+  IF(CUMLATIVEREADING>1000) THEN
+    PRICE           :=375+525+2250+((CUMLATIVEREADING-1000)*2.25);
+  END IF;
+  --3 calc tax
+  TAXAMT  :=PRICE /100*TaxCalc;
+  TAXPRICE:=(PRICE/100*TaxCalc)+PRICE;
+  BEGIN
+    SELECT
+      METER_ID
+    INTO
+      SMARTMTERID
+    FROM
+      METER
+    WHERE
+      CUSTOMER_ID=CustomerID;
+    INSERT
+    INTO
+      CUSTOMERTOTALUSAGE
+      (
+        CUST_ID,
+        METER_ID,
+        TOTAL_USAGE,
+        AMT,
+        TAXAMT,
+        TOTALAMT,
+        FROM_DATE,
+        TO_DATE
+      )
+      VALUES
+      (
+        CustomerID,
+        SMARTMTERID,
+        CUMLATIVEREADING,
+        PRICE,
+        TAXAMT,
+        TAXPRICE,
+        STARTTIME,
+        ENDTIME
+      );
+  END;
+  logmessage('Inserted TO DB .......'||CustomerID);
+END CALCULATEINVOICEPROCESS;

@@ -1,0 +1,352 @@
+Jul 08, 2015 12:19:36 AM org.springframework.context.support.AbstractApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2e22f376: startup date [Wed Jul 08 00:19:36 PDT 2015]; root of context hierarchy
+Jul 08, 2015 12:19:36 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFO: Loading XML bean definitions from class path resource [configurations/JobConfiguration.xml]
+Jul 08, 2015 12:19:36 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFO: Loading XML bean definitions from class path resource [configurations/JobDatabase.xml]
+Jul 08, 2015 12:19:36 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFO: Loading XML bean definitions from class path resource [configurations/JobMetadata.xml]
+Jul 08, 2015 12:19:36 AM org.springframework.beans.factory.support.DefaultListableBeanFactory registerBeanDefinition
+INFO: Overriding bean definition for bean 'transactionManager': replacing [Generic bean: class [org.springframework.batch.support.transaction.ResourcelessTransactionManager]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [configurations/JobDatabase.xml]] with [Generic bean: class [org.springframework.batch.support.transaction.ResourcelessTransactionManager]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [configurations/JobMetadata.xml]]
+Jul 08, 2015 12:19:36 AM org.springframework.beans.factory.support.DefaultListableBeanFactory registerBeanDefinition
+INFO: Overriding bean definition for bean 'invoicePartitionJob': replacing [Generic bean: class [org.springframework.batch.core.configuration.xml.SimpleFlowFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Generic bean: class [org.springframework.batch.core.configuration.xml.JobParserJobFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+Jul 08, 2015 12:19:36 AM org.springframework.beans.factory.support.DefaultListableBeanFactory registerBeanDefinition
+INFO: Overriding bean definition for bean 'readCustomerList': replacing [Generic bean: class [org.springframework.batch.item.database.JdbcPagingItemReader]; scope=step; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=false; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [configurations/JobConfiguration.xml]] with [Root bean: class [org.springframework.aop.scope.ScopedProxyFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in BeanDefinition defined in class path resource [configurations/JobConfiguration.xml]]
+Jul 08, 2015 12:19:36 AM org.springframework.beans.factory.support.DefaultListableBeanFactory registerBeanDefinition
+INFO: Overriding bean definition for bean 'calculateBillProcess': replacing [Generic bean: class [com.invoice.processors.CalculateBillProcess]; scope=step; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=false; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [configurations/JobConfiguration.xml]] with [Root bean: class [org.springframework.aop.scope.ScopedProxyFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in BeanDefinition defined in class path resource [configurations/JobConfiguration.xml]]
+Jul 08, 2015 12:19:36 AM org.springframework.beans.factory.support.DefaultListableBeanFactory registerBeanDefinition
+INFO: Overriding bean definition for bean 'generateInvoicePDF': replacing [Generic bean: class [com.invoice.writers.PDFWriters]; scope=step; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=false; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [configurations/JobConfiguration.xml]] with [Root bean: class [org.springframework.aop.scope.ScopedProxyFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in BeanDefinition defined in class path resource [configurations/JobConfiguration.xml]]
+Jul 08, 2015 12:19:36 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7378c252: defining beans [dataSource,transactionManager,jdbcTemplate,customerQueries,jobRepository,jobLauncher,org.springframework.batch.core.scope.internalStepScope,org.springframework.beans.factory.config.CustomEditorConfigurer,org.springframework.batch.core.configuration.xml.CoreNamespacePostProcessor,masterStep,invoicePartitionJob,slave,readCustomerList,rangePartitioner,taskExecutor,calculateBillProcess,generateInvoicePDF,scopedTarget.readCustomerList,scopedTarget.calculateBillProcess,scopedTarget.generateInvoicePDF]; root of factory hierarchy
+Jul 08, 2015 12:19:37 AM org.springframework.batch.core.launch.support.SimpleJobLauncher afterPropertiesSet
+INFO: No TaskExecutor has been set, defaulting to synchronous executor.
+Job Started : 2015-07-08 00:19:37.246
+Jul 08, 2015 12:19:37 AM org.springframework.batch.core.launch.support.SimpleJobLauncher$1 run
+INFO: Job: [FlowJob: [name=invoicePartitionJob]] launched with the following parameters: [{}]
+Jul 08, 2015 12:19:37 AM org.springframework.batch.core.job.SimpleStepHandler handleStep
+INFO: Executing step: [masterStep]
+StartCustomerId : 1EndCustomerId :5 Thread Name : Slave_1
+StartCustomerId : 6EndCustomerId :10 Thread Name : Slave_2
+StartCustomerId : 11EndCustomerId :15 Thread Name : Slave_3
+StartCustomerId : 16EndCustomerId :20 Thread Name : Slave_4
+StartCustomerId : 21EndCustomerId :25 Thread Name : Slave_5
+StartCustomerId : 26EndCustomerId :30 Thread Name : Slave_6
+StartCustomerId : 31EndCustomerId :35 Thread Name : Slave_7
+StartCustomerId : 36EndCustomerId :40 Thread Name : Slave_8
+StartCustomerId : 41EndCustomerId :45 Thread Name : Slave_9
+StartCustomerId : 46EndCustomerId :50 Thread Name : Slave_10
+StartCustomerId : 51EndCustomerId :55 Thread Name : Slave_11
+StartCustomerId : 56EndCustomerId :60 Thread Name : Slave_12
+StartCustomerId : 61EndCustomerId :65 Thread Name : Slave_13
+StartCustomerId : 66EndCustomerId :70 Thread Name : Slave_14
+StartCustomerId : 71EndCustomerId :75 Thread Name : Slave_15
+StartCustomerId : 76EndCustomerId :80 Thread Name : Slave_16
+StartCustomerId : 81EndCustomerId :85 Thread Name : Slave_17
+StartCustomerId : 86EndCustomerId :90 Thread Name : Slave_18
+StartCustomerId : 91EndCustomerId :95 Thread Name : Slave_19
+StartCustomerId : 96EndCustomerId :100 Thread Name : Slave_20
+Slave_19 processing : 91 : Peter
+Slave_4 processing : 16 : Jeff
+Slave_2 processing : 6 : Jeff
+Slave_9 processing : 41 : Peter
+Slave_20 processing : 96 : Jeff
+Slave_6 processing : 26 : Jeff
+Slave_7 processing : 31 : Peter
+Slave_11 processing : 51 : Peter
+Slave_14 processing : 66 : Jeff
+Slave_13 processing : 61 : Peter
+Slave_8 processing : 36 : Jeff
+Slave_17 processing : 81 : Peter
+Slave_1 processing : 1 : Peter
+Slave_5 processing : 21 : Peter
+Slave_3 processing : 11 : Peter
+Slave_10 processing : 46 : Jeff
+Slave_12 processing : 56 : Jeff
+Slave_16 processing : 76 : Jeff
+Slave_18 processing : 86 : Jeff
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 6
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 16
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 86
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 61
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 1
+Slave_15 processing : 71 : Peter
+Slave_1 processing : 2 : Magesh
+Slave_2 processing : 7 : Frank
+Slave_18 processing : 87 : Frank
+Slave_13 processing : 62 : Magesh
+Slave_4 processing : 17 : Frank
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 2
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 51
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 41
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 96
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 26
+Slave_6 processing : 27 : Frank
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 81
+Procedure Executed....... 
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 27
+Generate Invoice for customer's  : Customer ID  : 36
+Slave_8 processing : 37 : Frank
+Slave_17 processing : 82 : Magesh
+Slave_6 processing : 28 : Bhuvan
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 28
+Slave_6 processing : 29 : Saji
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 56
+Slave_1 processing : 3 : Karthichk
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 91
+Slave_12 processing : 57 : Frank
+Slave_11 processing : 52 : Magesh
+Slave_9 processing : 42 : Magesh
+Slave_20 processing : 97 : Frank
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 62
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 7
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 71
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 87
+Slave_18 processing : 88 : Bhuvan
+Slave_13 processing : 63 : Karthichk
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 76
+Slave_16 processing : 77 : Frank
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 88
+Slave_18 processing : 89 : Saji
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 77
+Slave_16 processing : 78 : Bhuvan
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 82
+Slave_17 processing : 83 : Karthichk
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 37
+Slave_19 processing : 92 : Magesh
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 29
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 57
+Slave_6 processing : 30 : Sivagnanam
+Slave_12 processing : 58 : Bhuvan
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 66
+Slave_14 processing : 67 : Frank
+Slave_2 processing : 8 : Bhuvan
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 97
+Slave_20 processing : 98 : Bhuvan
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 8
+Slave_2 processing : 9 : Saji
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 98
+Slave_20 processing : 99 : Saji
+Slave_15 processing : 72 : Magesh
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 78
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 11
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 21
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 3
+Slave_16 processing : 79 : Saji
+Slave_3 processing : 12 : Magesh
+Slave_5 processing : 22 : Magesh
+Slave_1 processing : 4 : Siva
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 92
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 83
+Slave_19 processing : 93 : Karthichk
+Slave_17 processing : 84 : Siva
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 84
+Slave_8 processing : 38 : Bhuvan
+Slave_17 processing : 85 : Jerald
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 30
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 38
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 9
+Slave_2 processing : 10 : Sivagnanam
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 42
+Slave_9 processing : 43 : Karthichk
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 89
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 46
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 79
+Slave_16 processing : 80 : Sivagnanam
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 4
+Slave_1 processing : 5 : Jerald
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 17
+Slave_4 processing : 18 : Bhuvan
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 93
+Slave_19 processing : 94 : Siva
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 58
+Slave_12 processing : 59 : Saji
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 94
+Procedure Executed....... 
+Slave_8 processing : 39 : Saji
+Slave_19 processing : 95 : Jerald
+Generate Invoice for customer's  : Customer ID  : 67
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 52
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 63
+Slave_14 processing : 68 : Bhuvan
+Slave_11 processing : 53 : Karthichk
+Slave_13 processing : 64 : Siva
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 10
+Slave_18 processing : 90 : Sivagnanam
+Procedure Executed....... 
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 22
+Generate Invoice for customer's  : Customer ID  : 31
+Slave_7 processing : 32 : Magesh
+Slave_5 processing : 23 : Karthichk
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 72
+Slave_10 processing : 47 : Frank
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 12
+Slave_3 processing : 13 : Karthichk
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 5
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 13
+Slave_3 processing : 14 : Siva
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 95
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 85
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 59
+Slave_12 processing : 60 : Sivagnanam
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 64
+Slave_13 processing : 65 : Jerald
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 53
+Slave_11 processing : 54 : Siva
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 65
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 32
+Slave_7 processing : 33 : Karthichk
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 43
+Slave_15 processing : 73 : Karthichk
+Slave_9 processing : 44 : Siva
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 80
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 73
+Slave_15 processing : 74 : Siva
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 18
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 44
+Slave_9 processing : 45 : Jerald
+Slave_4 processing : 19 : Saji
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 14
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 74
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 68
+Slave_15 processing : 75 : Jerald
+Slave_3 processing : 15 : Jerald
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 99
+Slave_14 processing : 69 : Saji
+Slave_20 processing : 100 : Sivagnanam
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 60
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 15
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 90
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 54
+Slave_11 processing : 55 : Jerald
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 33
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 55
+Slave_7 processing : 34 : Siva
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 39
+Slave_8 processing : 40 : Sivagnanam
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 19
+Slave_4 processing : 20 : Sivagnanam
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 40
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 20
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 69
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 23
+Slave_14 processing : 70 : Sivagnanam
+Slave_5 processing : 24 : Siva
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 45
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 34
+Slave_7 processing : 35 : Jerald
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 75
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 35
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 24
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 100
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 70
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 47
+Slave_5 processing : 25 : Jerald
+Slave_10 processing : 48 : Bhuvan
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 25
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 48
+Slave_10 processing : 49 : Saji
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 49
+Slave_10 processing : 50 : Sivagnanam
+Procedure Executed....... 
+Generate Invoice for customer's  : Customer ID  : 50
+Jul 08, 2015 12:19:42 AM org.springframework.batch.core.launch.support.SimpleJobLauncher$1 run
+INFO: Job: [FlowJob: [name=invoicePartitionJob]] completed with the following parameters: [{}] and the following status: [COMPLETED]
+Exit Status : COMPLETED
+Exit Status : []
+Job End :2015-07-08 00:19:42.988
